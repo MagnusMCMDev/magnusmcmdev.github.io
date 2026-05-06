@@ -1,0 +1,67 @@
+/* CSS scroll-snap carousel — replacement for Swiper.js initialization.
+   Scoped to .elementor-widget-image-carousel so it only affects those widgets. */
+
+.elementor-widget-image-carousel .elementor-image-carousel-wrapper{
+  position:relative;
+  overflow:hidden;
+}
+.elementor-widget-image-carousel .elementor-image-carousel.swiper-wrapper{
+  display:flex;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  transform:none !important;
+}
+.elementor-widget-image-carousel .elementor-image-carousel.swiper-wrapper::-webkit-scrollbar{
+  display:none;
+}
+.elementor-widget-image-carousel .swiper-slide{
+  flex:0 0 100%;
+  width:100%;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+}
+.elementor-widget-image-carousel .swiper-slide-inner{
+  margin:0;
+  display:block;
+}
+.elementor-widget-image-carousel .swiper-slide-image{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+/* arrows (injected by vrm-carousel.js) */
+.vrm-carousel-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.85);
+  color:#222;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:5;
+  box-shadow:0 2px 8px rgba(0,0,0,.18);
+  transition:background .2s,opacity .2s;
+  padding:0;
+  font:inherit;
+}
+.vrm-carousel-arrow:hover{background:#fff}
+.vrm-carousel-arrow:focus-visible{outline:2px solid #0a66c2;outline-offset:2px}
+.vrm-carousel-arrow--prev{left:10px}
+.vrm-carousel-arrow--next{right:10px}
+.vrm-carousel-arrow svg{width:22px;height:22px;display:block}
+@media (max-width:600px){
+  .vrm-carousel-arrow{width:36px;height:36px}
+  .vrm-carousel-arrow svg{width:18px;height:18px}
+}

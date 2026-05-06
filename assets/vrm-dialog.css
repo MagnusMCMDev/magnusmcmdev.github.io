@@ -1,0 +1,10 @@
+.vrm-dialog{border:0;padding:0;border-radius:12px;background:#fff;max-width:min(95vw,1000px);max-height:95vh;overflow:hidden;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.vrm-dialog::backdrop{background:rgba(0,0,0,.6)}
+.vrm-dialog__close{position:absolute;top:8px;right:8px;width:36px;height:36px;border:0;background:#fff;border-radius:50%;font-size:22px;line-height:1;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center;color:#222;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.vrm-dialog__close:hover{background:#f4f4f4}
+.vrm-dialog__content{padding:48px 24px 24px;overflow:auto;max-height:95vh;line-height:1.5}
+.vrm-dialog__content h1,.vrm-dialog__content h2,.vrm-dialog__content h3{margin-top:1em}
+.vrm-dialog__content :first-child{margin-top:0}
+body.vrm-dialog-open{position:fixed;left:0;right:0;width:100%}
+.vrm-dialog--calendly{width:min(95vw,1000px)}
+.vrm-dialog--calendly .calendly-inline-widget{display:block}

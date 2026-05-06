@@ -1,0 +1,227 @@
+/* Replacement for the missing g-business-reviews-rating plugin CSS.
+   Scoped to .google-business-reviews-rating. Handles both variants used in this site:
+     - .columns.three.fonts.bubble.center  (home: 3 cards w/ header + bubbles)
+     - .fill.tiny.narrow.two               (regala: 2 compact filled cards) */
+
+.google-business-reviews-rating{
+  font-family:inherit;
+  color:#222;
+  line-height:1.5;
+  max-width:1100px;
+  margin:0 auto;
+  padding:24px 16px;
+  box-sizing:border-box;
+}
+.google-business-reviews-rating *{box-sizing:border-box}
+.google-business-reviews-rating.center{text-align:center}
+
+/* ---------- Header ---------- */
+.google-business-reviews-rating .heading{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin:0 0 4px;
+  font-size:1.6rem;
+  font-weight:600;
+  color:#3a4a3f;
+}
+.google-business-reviews-rating .heading .icon img{
+  width:48px;
+  height:48px;
+  object-fit:contain;
+  display:block;
+}
+.google-business-reviews-rating .vicinity{
+  margin:0 0 14px;
+  color:#888;
+  font-size:.95rem;
+}
+.google-business-reviews-rating .rating{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:0 0 28px;
+  font-size:1.05rem;
+  flex-wrap:wrap;
+}
+.google-business-reviews-rating .rating .number{
+  font-size:1.6rem;
+  font-weight:400;
+  color:#555;
+  line-height:1;
+}
+.google-business-reviews-rating .rating .count{
+  color:#777;
+  text-decoration:none;
+  border-bottom:1px solid transparent;
+  transition:border-color .15s;
+}
+.google-business-reviews-rating .rating .count:hover{border-color:#aaa}
+
+/* ---------- Stars ---------- */
+.google-business-reviews-rating .all-stars{
+  display:inline-flex;
+  gap:2px;
+  font-size:1.4rem;
+  line-height:1;
+}
+.google-business-reviews-rating .all-stars .star::before{
+  content:"\2605";          /* ★ */
+  color:#fbbc04;
+}
+.google-business-reviews-rating .all-stars .star.split-90-10::before{
+  background:linear-gradient(90deg,#fbbc04 90%,#dadce0 90%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+/* the per-review .rating uses literal ★ chars in markup */
+.google-business-reviews-rating .listing .rating{
+  color:#fbbc04;
+  font-size:.95rem;
+  letter-spacing:1px;
+  display:inline-block;
+  margin:0;
+}
+
+/* ---------- Listing grid ---------- */
+.google-business-reviews-rating .listing{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:24px;
+  text-align:left;
+}
+.google-business-reviews-rating.three .listing{grid-template-columns:repeat(3,1fr)}
+.google-business-reviews-rating.two   .listing{grid-template-columns:repeat(2,1fr)}
+@media (max-width:900px){
+  .google-business-reviews-rating.three .listing{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:600px){
+  .google-business-reviews-rating.three .listing,
+  .google-business-reviews-rating.two   .listing{grid-template-columns:1fr}
+}
+
+.google-business-reviews-rating .listing > li{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  list-style:none;
+}
+
+/* avatar + name */
+.google-business-reviews-rating .author-avatar{display:block;margin-bottom:6px}
+.google-business-reviews-rating .author-avatar img{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+}
+.google-business-reviews-rating .author-name a{
+  color:#222;
+  font-weight:600;
+  text-decoration:none;
+}
+.google-business-reviews-rating .author-name a:hover{text-decoration:underline}
+.google-business-reviews-rating .review-meta{display:block;margin:4px 0}
+.google-business-reviews-rating .relative-time-description{color:#888;font-size:.9rem;margin-left:6px}
+
+/* ---------- Card body ---------- */
+.google-business-reviews-rating .text{
+  font-size:.95rem;
+  color:#333;
+  line-height:1.55;
+  width:100%;
+}
+.google-business-reviews-rating .review-full-text{display:none}
+.google-business-reviews-rating.expanded .review-full-text,
+.google-business-reviews-rating .text-excerpt.is-expanded .review-full-text{display:inline}
+.google-business-reviews-rating .text-excerpt.is-expanded .review-more-placeholder{display:none}
+.google-business-reviews-rating .review-more-placeholder{
+  cursor:pointer;
+  color:#555;
+  font-weight:600;
+  user-select:none;
+}
+.google-business-reviews-rating .review-more-placeholder:hover{color:#000}
+
+/* ---------- Bubble variant (home) ---------- */
+.google-business-reviews-rating.bubble .listing > li{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.google-business-reviews-rating.bubble .author-avatar{order:1}
+.google-business-reviews-rating.bubble .review-meta:nth-of-type(1){order:2}
+.google-business-reviews-rating.bubble .text{
+  order:3;
+  margin-top:10px;
+  padding:14px 16px;
+  border:1px solid #d8d8d8;
+  border-radius:6px;
+  position:relative;
+  background:#fff;
+}
+.google-business-reviews-rating.bubble .text::before{
+  content:"";
+  position:absolute;
+  top:-7px;
+  left:50%;
+  transform:translateX(-50%) rotate(45deg);
+  width:12px;
+  height:12px;
+  background:#fff;
+  border-left:1px solid #d8d8d8;
+  border-top:1px solid #d8d8d8;
+}
+.google-business-reviews-rating.bubble .review-meta:nth-of-type(2){order:4;margin-top:10px}
+
+/* ---------- Fill variant (regala) ---------- */
+.google-business-reviews-rating.fill .listing > li{
+  background:#fafafa;
+  border:1px solid #ececec;
+  border-radius:8px;
+  padding:18px 16px;
+  align-items:flex-start;
+  text-align:left;
+}
+.google-business-reviews-rating.fill .author-avatar{
+  align-self:flex-start;
+}
+.google-business-reviews-rating.fill .review-meta:nth-of-type(1){
+  align-self:flex-start;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  margin:6px 0 8px;
+}
+.google-business-reviews-rating.fill .text{margin-top:6px}
+.google-business-reviews-rating.fill.tiny{font-size:.9rem}
+.google-business-reviews-rating.fill.tiny .author-avatar img{width:48px;height:48px}
+.google-business-reviews-rating.fill.narrow .listing > li{padding:14px 14px}
+
+/* ---------- Attribution ---------- */
+.google-business-reviews-rating .attribution{
+  margin:24px 0 0;
+  text-align:center;
+}
+.google-business-reviews-rating .powered-by-google{
+  display:inline-block;
+  width:120px;
+  height:18px;
+  background:url("https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png") no-repeat center / auto 18px;
+  vertical-align:middle;
+}
+.google-business-reviews-rating .attribution::before{
+  content:"powered by ";
+  color:#888;
+  font-size:.85rem;
+  vertical-align:middle;
+  margin-right:4px;
+}
