@@ -151,22 +151,30 @@
 }
 .google-business-reviews-rating .review-more-placeholder:hover{color:#000}
 
-/* ---------- Bubble variant (home) ---------- */
+/* ---------- Bubble variant (home) ----------
+   Source order is already correct: avatar → name → bubble → rating+date.
+   No `order` properties needed; use sibling combinators to target each
+   .review-meta unambiguously (nth-of-type counts by tag, not by class). */
 .google-business-reviews-rating.bubble .listing > li{
   display:flex;
   flex-direction:column;
   align-items:center;
 }
-.google-business-reviews-rating.bubble .author-avatar{order:1}
-.google-business-reviews-rating.bubble .review-meta:nth-of-type(1){order:2}
+.google-business-reviews-rating.bubble .author-avatar img{
+  width:50px;
+  height:50px;
+}
+.google-business-reviews-rating.bubble .author-avatar + .review-meta{
+  margin:6px 0 10px;
+  font-size:1rem;
+}
 .google-business-reviews-rating.bubble .text{
-  order:3;
-  margin-top:10px;
-  padding:14px 16px;
+  padding:14px 18px;
   border:1px solid #d8d8d8;
   border-radius:6px;
   position:relative;
   background:#fff;
+  text-align:left;
 }
 .google-business-reviews-rating.bubble .text::before{
   content:"";
@@ -180,7 +188,10 @@
   border-left:1px solid #d8d8d8;
   border-top:1px solid #d8d8d8;
 }
-.google-business-reviews-rating.bubble .review-meta:nth-of-type(2){order:4;margin-top:10px}
+.google-business-reviews-rating.bubble .text + .review-meta{
+  margin-top:12px;
+  font-size:.9rem;
+}
 
 /* ---------- Fill variant (regala) ---------- */
 .google-business-reviews-rating.fill .listing > li{
@@ -194,7 +205,7 @@
 .google-business-reviews-rating.fill .author-avatar{
   align-self:flex-start;
 }
-.google-business-reviews-rating.fill .review-meta:nth-of-type(1){
+.google-business-reviews-rating.fill .author-avatar + .review-meta{
   align-self:flex-start;
   display:flex;
   flex-direction:column;
@@ -209,19 +220,17 @@
 /* ---------- Attribution ---------- */
 .google-business-reviews-rating .attribution{
   margin:24px 0 0;
-  text-align:center;
-}
-.google-business-reviews-rating .powered-by-google{
-  display:inline-block;
-  width:120px;
-  height:18px;
-  background:url("https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png") no-repeat center / auto 18px;
-  vertical-align:middle;
-}
-.google-business-reviews-rating .attribution::before{
-  content:"powered by ";
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
   color:#888;
   font-size:.85rem;
-  vertical-align:middle;
-  margin-right:4px;
+}
+.google-business-reviews-rating .attribution::before{content:"powered by"}
+.google-business-reviews-rating .powered-by-google{
+  display:inline-block;
+  width:60px;
+  height:20px;
+  background:url("https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png") no-repeat center / contain;
 }
