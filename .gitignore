@@ -1,2 +1,6 @@
 # Claude Code local settings (do not publish)
 .claude/
+
+# Local working docs (audits, drafts) — keep out of public repo
+AUDITORIA.md
+
