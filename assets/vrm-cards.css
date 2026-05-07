@@ -5,8 +5,8 @@
 .elementor-widget-call-to-action .elementor-cta{display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;width:100%;text-decoration:none;border-radius:inherit}
 .elementor-widget-call-to-action .elementor-cta__bg-wrapper{position:absolute;inset:0;z-index:0}
 .elementor-widget-call-to-action .elementor-cta__bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .4s ease}
-.elementor-widget-call-to-action .elementor-cta__bg-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45);transition:background .3s ease}
-.elementor-widget-call-to-action .elementor-cta__content{position:relative;z-index:1;width:100%;padding:24px 28px;color:#fff;text-align:center}
+.elementor-widget-call-to-action .elementor-cta__bg-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.05) 0%,rgba(0,0,0,.20) 50%,rgba(0,0,0,.40) 100%);transition:background .3s ease}
+.elementor-widget-call-to-action .elementor-cta__content{position:relative;z-index:1;width:100%;padding:24px 28px;color:#fff;text-align:center;text-shadow:0 1px 4px rgba(0,0,0,.55);display:flex;flex-direction:column;justify-content:center;align-items:center;box-sizing:border-box}
 .elementor-widget-call-to-action .elementor-cta__title,
 .elementor-widget-call-to-action .elementor-cta__description{color:#fff;margin:0 0 .75em}
 .elementor-widget-call-to-action .elementor-cta__title{font-size:1.4rem;font-weight:700;line-height:1.25}
